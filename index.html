@@ -122,7 +122,24 @@
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Edad:</strong> <span>20</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Edad:</strong> <span id="edad"></span></li>
+                  <script>
+                      function calcularEdad(fechaNacimiento) {
+                          const hoy = new Date();
+                          const nacimiento = new Date(fechaNacimiento);
+                          let edad = hoy.getFullYear() - nacimiento.getFullYear();
+                          
+                          // Ajustar si aún no ha pasado el cumpleaños en el año actual
+                          if (hoy.getMonth() < nacimiento.getMonth() || 
+                              (hoy.getMonth() === nacimiento.getMonth() && hoy.getDate() < nacimiento.getDate())) {
+                              edad--;
+                          }
+                  
+                          return edad;
+                      }
+                  
+                      document.getElementById("edad").textContent = calcularEdad("2003-09-06");
+                  </script>
                   <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Técnico</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>E-Mail:</strong> <span>morenoguevarajuan20@gmail.com</span></li>
                   <!-- <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li> -->
